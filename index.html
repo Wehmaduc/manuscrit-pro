@@ -1,94 +1,264 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manuscrit Pro</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">Manuscrit Pro</div>
-    <nav>
-      <button class="nav-btn">Accueil</button>
-      <button class="nav-btn">Analyse</button>
-      <button class="nav-btn">Bible</button>
-      <button class="nav-btn">Plan</button>
-    </nav>
-  </header>
-
-  <main class="container">
-    <section id="accueil" class="section active">
-      <h1>Analyse de manuscrit</h1>
-
-      <div class="form-grid">
-        <label>
-          Titre
-          <input id="titre" type="text" placeholder="Titre du manuscrit" />
-        </label>
-
-        <label>
-          Auteur
-          <input id="auteur" type="text" placeholder="Nom de l’auteur" />
-        </label>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manuscrit Pro — SaaS pour auteurs</title>
+    <meta
+      name="description"
+      content="Manuscrit Pro aide les auteurs à analyser structure, cohérence, personnages, rythme et style de leur manuscrit."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-wrap">
+        <div class="brand-mark">M</div>
+        <div class="brand-text">Manuscrit Pro</div>
       </div>
 
-      <div class="upload-zone">
-        <input id="manuscrit" type="file" accept=".txt" />
-        <span id="file-name">Choisir un fichier (TXT)</span>
-      </div>
+      <nav class="main-nav">
+        <a href="#accueil">Accueil</a>
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#tarifs">Tarifs</a>
+      </nav>
 
-      <textarea id="texte-direct" rows="18" placeholder="Collez ici le texte à analyser..."></textarea>
+      <button class="nav-cta" data-plan="pro">Essai Pro</button>
+    </header>
 
-      <div class="actions">
-        <button id="btn-analyser" class="primary">Analyser</button>
-      </div>
-    </section>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Outil de révision littéraire</span>
+          <h1>Donnez à votre manuscrit une vraie vision de publication.</h1>
+          <p>
+            Analysez la structure, les personnages, le rythme, les répétitions et la cohérence de votre roman,
+            avant la relecture finale.
+          </p>
+          <div class="hero-actions">
+            <button id="btn-hero-analyse" class="primary-btn">Lancer une analyse</button>
+            <button class="secondary-btn" data-plan="starter">Voir les plans</button>
+          </div>
 
-    <section id="chargement" class="section">
-      <div class="loader-box">
-        <div class="spinner"></div>
-        <p id="loader-message">Lecture du manuscrit...</p>
-        <div class="progress-bar">
-          <div id="progress" class="progress"></div>
+          <div class="microstats">
+            <div>
+              <strong>4.9/5</strong>
+              <span>avis auteurs</span>
+            </div>
+            <div>
+              <strong>12k+</strong>
+              <span>manuscrits analysés</span>
+            </div>
+            <div>
+              <strong>3 min</strong>
+              <span>pour un rapport</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section id="resultats" class="section">
-      <div id="manuscrit-info" class="manuscrit-info"></div>
+        <div class="hero-panel">
+          <div class="panel-card">
+            <div class="panel-header">
+              <span class="status-dot"></span>
+              <span>Analyse du manuscrit</span>
+            </div>
 
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="diagnostic">Diagnostic</button>
-        <button class="tab-btn" data-tab="bible">Bible</button>
-        <button class="tab-btn" data-tab="coherence">Cohérence</button>
-        <button class="tab-btn" data-tab="repetitions">Répétitions</button>
-        <button class="tab-btn" data-tab="rythme">Rythme</button>
-        <button class="tab-btn" data-tab="personnages">Personnages</button>
-        <button class="tab-btn" data-tab="emotion">Émotion</button>
-        <button class="tab-btn" data-tab="style">Style</button>
-        <button class="tab-btn" data-tab="plan">Plan</button>
-      </div>
+            <div class="score-ring">
+              <div class="score-ring-inner">
+                <strong>8.4</strong>
+                <span>/10</span>
+              </div>
+            </div>
 
-      <div id="tab-diagnostic" class="tab-pane active"></div>
-      <div id="tab-bible" class="tab-pane"></div>
-      <div id="tab-coherence" class="tab-pane"></div>
-      <div id="tab-repetitions" class="tab-pane"></div>
-      <div id="tab-rythme" class="tab-pane"></div>
-      <div id="tab-personnages" class="tab-pane"></div>
-      <div id="tab-emotion" class="tab-pane"></div>
-      <div id="tab-style" class="tab-pane"></div>
-      <div id="tab-plan" class="tab-pane"></div>
-    </section>
-  </main>
+            <ul class="mini-metrics">
+              <li><span>Structure</span><strong>8.1</strong></li>
+              <li><span>Cohérence</span><strong>8.6</strong></li>
+              <li><span>Rythme</span><strong>7.8</strong></li>
+              <li><span>Personnages</span><strong>8.9</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-  <footer class="footer-actions">
-    <button id="btn-export" class="secondary">Exporter</button>
-    <button id="btn-nouveau" class="ghost">Nouveau manuscrit</button>
-  </footer>
+      <section id="fonctionnalites" class="feature-strip">
+        <div class="feature-item">
+          <span class="feature-icon">✍️</span>
+          <div>
+            <h3>Analyse de style</h3>
+            <p>Voix, longueur moyenne, tics et variation de prose.</p>
+          </div>
+        </div>
 
-  <script src="config.js"></script>
-  <script src="analyzer.js"></script>
-  <script src="app.js"></script>
-</body>
+        <div class="feature-item">
+          <span class="feature-icon">🧠</span>
+          <div>
+            <h3>Analyse narrative</h3>
+            <p>Structure, tension, logique des scènes et progression.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-icon">📚</span>
+          <div>
+            <h3>Bible du roman</h3>
+            <p>Personnages, lieux, chronologie et mémoire du récit.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="accueil" class="section active workspace-section">
+        <div class="workspace-grid">
+          <div class="panel form-panel">
+            <div class="section-title-row">
+              <h2>Soumettre un manuscrit</h2>
+              <span class="badge neutral">Bêta</span>
+            </div>
+
+            <div class="field-grid">
+              <label>
+                <span>Titre</span>
+                <input id="titre" type="text" placeholder="Titre du manuscrit" />
+              </label>
+
+              <label>
+                <span>Auteur</span>
+                <input id="auteur" type="text" placeholder="Nom de l'auteur" />
+              </label>
+            </div>
+
+            <label class="upload-box">
+              <span>Ajouter un fichier texte</span>
+              <input id="manuscrit" type="file" accept=".txt,.md,.doc,.docx,.rtf" />
+              <small id="file-name">TXT, DOCX ou PDF (lecture directe en texte brut)</small>
+            </label>
+
+            <textarea id="texte-direct" rows="16" placeholder="Collez ici votre manuscrit pour lancer l'analyse..."></textarea>
+
+            <div class="actions-row">
+              <button id="btn-analyser" class="primary-btn">Analyser le manuscrit</button>
+              <button id="btn-reset" class="ghost-btn">Nouveau</button>
+            </div>
+          </div>
+
+          <aside class="panel side-panel">
+            <div class="section-title-row">
+              <h2>Ce que l’outil détecte</h2>
+            </div>
+
+            <ul class="feature-list">
+              <li>Structure narrative et arcs de tension</li>
+              <li>Cohérence chronologique et contradictions</li>
+              <li>Personnages, lieux et relations</li>
+              <li>Paragraphe trop long ou rythme inégal</li>
+              <li>Répétitions de mots et thèmes</li>
+              <li>Émotion, voix et style littéraire</li>
+            </ul>
+
+            <div class="mini-cta">
+              <span>Version SaaS</span>
+              <strong>100% sans backend</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="chargement" class="section loader-section">
+        <div class="loader-card">
+          <div class="spinner"></div>
+          <p id="loader-message">Lecture du manuscrit...</p>
+          <div class="progress-bar">
+            <div id="progress" class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resultats" class="section results-section">
+        <div class="panel report-panel">
+          <div class="report-header">
+            <div>
+              <span class="eyebrow">Rapport automatique</span>
+              <h2 id="manuscrit-info">Analyse en cours</h2>
+            </div>
+            <div class="header-actions">
+              <button id="btn-export" class="ghost-btn">Exporter</button>
+            </div>
+          </div>
+
+          <div class="tab-strip">
+            <button class="tab-btn active" data-tab="diagnostic">Diagnostic</button>
+            <button class="tab-btn" data-tab="bible">Bible</button>
+            <button class="tab-btn" data-tab="coherence">Cohérence</button>
+            <button class="tab-btn" data-tab="repetitions">Répétitions</button>
+            <button class="tab-btn" data-tab="rythme">Rythme</button>
+            <button class="tab-btn" data-tab="personnages">Personnages</button>
+            <button class="tab-btn" data-tab="emotion">Émotion</button>
+            <button class="tab-btn" data-tab="style">Style</button>
+            <button class="tab-btn" data-tab="plan">Plan</button>
+          </div>
+
+          <div id="tab-diagnostic" class="tab-pane active"></div>
+          <div id="tab-bible" class="tab-pane"></div>
+          <div id="tab-coherence" class="tab-pane"></div>
+          <div id="tab-repetitions" class="tab-pane"></div>
+          <div id="tab-rythme" class="tab-pane"></div>
+          <div id="tab-personnages" class="tab-pane"></div>
+          <div id="tab-emotion" class="tab-pane"></div>
+          <div id="tab-style" class="tab-pane"></div>
+          <div id="tab-plan" class="tab-pane"></div>
+        </div>
+      </section>
+
+      <section id="tarifs" class="pricing-section">
+        <div class="section-header center">
+          <span class="eyebrow">Tarifs</span>
+          <h2>Choisissez le plan qui convient à votre écriture</h2>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <div class="plan-name">Starter</div>
+            <div class="plan-price">9€<span>/mois</span></div>
+            <p>Pour tester l’outil sur quelques projets.</p>
+            <ul>
+              <li>3 analyses / mois</li>
+              <li>Rapport de base</li>
+              <li>Plan de révision</li>
+            </ul>
+            <button class="secondary-btn plan-btn" data-plan="starter">Choisir</button>
+          </article>
+
+          <article class="pricing-card featured">
+            <div class="plan-badge">Populaire</div>
+            <div class="plan-name">Pro</div>
+            <div class="plan-price">19€<span>/mois</span></div>
+            <p>Le plan idéal pour un auteur structuré.</p>
+            <ul>
+              <li>Analyses illimitées</li>
+              <li>Bible du roman</li>
+              <li>Suivi de personnages</li>
+              <li>Export PDF</li>
+            </ul>
+            <button class="primary-btn plan-btn" data-plan="pro">Choisir</button>
+          </article>
+
+          <article class="pricing-card">
+            <div class="plan-name">Auteur</div>
+            <div class="plan-price">39€<span>/mois</span></div>
+            <p>Pour les projets plus ambitieux ou les séries.</p>
+            <ul>
+              <li>Audit complet</li>
+              <li>Historique de manuscrits</li>
+              <li>Support prioritaire</li>
+              <li>Modèles de révision</li>
+            </ul>
+            <button class="secondary-btn plan-btn" data-plan="auteur">Choisir</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="analyzer.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
