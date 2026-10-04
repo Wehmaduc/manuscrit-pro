@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manuscrit Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Manuscrit Pro</div>
+    <nav>
+      <button class="nav-btn">Accueil</button>
+      <button class="nav-btn">Analyse</button>
+      <button class="nav-btn">Bible</button>
+      <button class="nav-btn">Plan</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="accueil" class="section active">
+      <h1>Analyse de manuscrit</h1>
+
+      <div class="form-grid">
+        <label>
+          Titre
+          <input id="titre" type="text" placeholder="Titre du manuscrit" />
+        </label>
+
+        <label>
+          Auteur
+          <input id="auteur" type="text" placeholder="Nom de l’auteur" />
+        </label>
+      </div>
+
+      <div class="upload-zone">
+        <input id="manuscrit" type="file" accept=".txt" />
+        <span id="file-name">Choisir un fichier (TXT)</span>
+      </div>
+
+      <textarea id="texte-direct" rows="18" placeholder="Collez ici le texte à analyser..."></textarea>
+
+      <div class="actions">
+        <button id="btn-analyser" class="primary">Analyser</button>
+      </div>
+    </section>
+
+    <section id="chargement" class="section">
+      <div class="loader-box">
+        <div class="spinner"></div>
+        <p id="loader-message">Lecture du manuscrit...</p>
+        <div class="progress-bar">
+          <div id="progress" class="progress"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultats" class="section">
+      <div id="manuscrit-info" class="manuscrit-info"></div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="diagnostic">Diagnostic</button>
+        <button class="tab-btn" data-tab="bible">Bible</button>
+        <button class="tab-btn" data-tab="coherence">Cohérence</button>
+        <button class="tab-btn" data-tab="repetitions">Répétitions</button>
+        <button class="tab-btn" data-tab="rythme">Rythme</button>
+        <button class="tab-btn" data-tab="personnages">Personnages</button>
+        <button class="tab-btn" data-tab="emotion">Émotion</button>
+        <button class="tab-btn" data-tab="style">Style</button>
+        <button class="tab-btn" data-tab="plan">Plan</button>
+      </div>
+
+      <div id="tab-diagnostic" class="tab-pane active"></div>
+      <div id="tab-bible" class="tab-pane"></div>
+      <div id="tab-coherence" class="tab-pane"></div>
+      <div id="tab-repetitions" class="tab-pane"></div>
+      <div id="tab-rythme" class="tab-pane"></div>
+      <div id="tab-personnages" class="tab-pane"></div>
+      <div id="tab-emotion" class="tab-pane"></div>
+      <div id="tab-style" class="tab-pane"></div>
+      <div id="tab-plan" class="tab-pane"></div>
+    </section>
+  </main>
+
+  <footer class="footer-actions">
+    <button id="btn-export" class="secondary">Exporter</button>
+    <button id="btn-nouveau" class="ghost">Nouveau manuscrit</button>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="analyzer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
