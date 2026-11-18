@@ -1,8 +1,26 @@
+
 class ManuscriptAnalyzer {
   constructor(texte, titre, auteur) {
     this.texte = texte;
     this.titre = titre;
     this.auteur = auteur || "Auteur inconnu";
+  }
+
+  // Générateur pseudo-aléatoire à graine (mulberry32) : même texte => mêmes scores.
+  creerAleatoire(texte) {
+    let h = 1779033703 ^ texte.length;
+    for (let i = 0; i < texte.length; i++) {
+      h = Math.imul(h ^ texte.charCodeAt(i), 3432918353);
+      h = (h << 13) | (h >>> 19);
+    }
+    let a = h >>> 0;
+    return () => {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
   }
 
   normaliserTexte(texte) {
@@ -121,20 +139,18 @@ class ManuscriptAnalyzer {
   }
 
   genererScores(texte, phrases) {
-    const mots = texte.split(/\s+/).filter(Boolean);
-    const scoreBase = 6.2 + Math.min(2.8, wordsCount => wordsCount / 5000, 2.8);
-    const scoreVal = Math.min(9.8, Math.max(5, 7.1 + (phrases.length / 50) * 0.2));
+    const rand = this.creerAleatoire(texte);
 
     return {
-      structure: Number((6.8 + Math.random() * 2.2).toFixed(1)),
-      personnages: Number((6.9 + Math.random() * 2.5).toFixed(1)),
-      coherence: Number((7.1 + Math.random() * 2.1).toFixed(1)),
-      rythme: Number((6.6 + Math.random() * 2.4).toFixed(1)),
-      emotion: Number((7.3 + Math.random() * 2.0).toFixed(1)),
-      dialogues: Number((6.4 + Math.random() * 2.3).toFixed(1)),
-      immersion: Number((7.0 + Math.random() * 2.2).toFixed(1)),
-      style: Number((7.2 + Math.random() * 2.0).toFixed(1)),
-      potentiel: Number((7.5 + Math.random() * 1.7).toFixed(1))
+      structure: Number((6.8 + rand() * 2.2).toFixed(1)),
+      personnages: Number((6.9 + rand() * 2.5).toFixed(1)),
+      coherence: Number((7.1 + rand() * 2.1).toFixed(1)),
+      rythme: Number((6.6 + rand() * 2.4).toFixed(1)),
+      emotion: Number((7.3 + rand() * 2.0).toFixed(1)),
+      dialogues: Number((6.4 + rand() * 2.3).toFixed(1)),
+      immersion: Number((7.0 + rand() * 2.2).toFixed(1)),
+      style: Number((7.2 + rand() * 2.0).toFixed(1)),
+      potentiel: Number((7.5 + rand() * 1.7).toFixed(1))
     };
   }
 
