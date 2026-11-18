@@ -1,3 +1,4 @@
+
 class ManuscriptAnalyzer {
   constructor(texte, titre, auteur) {
     this.texte = texte;
@@ -121,10 +122,6 @@ class ManuscriptAnalyzer {
   }
 
   genererScores(texte, phrases) {
-    const mots = texte.split(/\s+/).filter(Boolean);
-    const scoreBase = 6.2 + Math.min(2.8, wordsCount => wordsCount / 5000, 2.8);
-    const scoreVal = Math.min(9.8, Math.max(5, 7.1 + (phrases.length / 50) * 0.2));
-
     return {
       structure: Number((6.8 + Math.random() * 2.2).toFixed(1)),
       personnages: Number((6.9 + Math.random() * 2.5).toFixed(1)),
@@ -199,7 +196,7 @@ class ManuscriptAnalyzer {
       ],
       forces: [
         "Bonne base structurelle",
-        "Potential dramatique net",
+        "Potentiel dramatique net",
         "Tonalité cohérente",
         "Dynamique émotionnelle forte"
       ],
@@ -268,4 +265,8 @@ class ManuscriptAnalyzer {
       recommandations: this.construireRecommandations(texteNet)
     };
   }
+}
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { ManuscriptAnalyzer };
 }
